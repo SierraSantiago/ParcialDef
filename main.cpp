@@ -1,20 +1,11 @@
 #include "mbed.h"
 #include <cmath>
+#include <cstdint>
 #include <iostream>
 #include <vector>
 
 const int numRows = 4;
 const int numCols = 4;
-
-PwmOut ledR(LED1);
-PwmOut ledG(LED2);
-PwmOut ledB(LED3);
-
-void setRGBColor(float red, float green, float blue) {
-  ledR = red;
-  ledG = green;
-  ledB = blue;
-}
 
 char keyMap[numRows][numCols] = {{'1', '2', '3', 'A'},
                                  {'4', '5', '6', 'B'},
@@ -149,5 +140,20 @@ int main() {
          << desviacionEstandar << endl;
 
   } else if (num1 == 3) {
+    PwmOut ledR(LED1);
+    PwmOut ledG(LED2);
+    PwmOut ledB(LED3);
+    double r, g, b;
+    cout << "ingresar el valor del led Rojo(de 0 a 255):";
+    r = stod(numeroReal());
+    cout << "ingresar el valor del led verde(de 0 a 255):";
+    g = stod(numeroReal());
+    cout << "ingresar el valor del led Rojo(de 0 a 255):";
+    b = stod(numeroReal());
+
+
+    ledR.write(r/255);
+    ledG.write(g/255);
+    ledB.write(b/255);
   }
 }
